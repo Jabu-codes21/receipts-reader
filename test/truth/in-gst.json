@@ -1,0 +1,40 @@
+{
+ "id": "in-gst",
+ "vendor": "Shree Mahalakshmi Stationers",
+ "date": "2026-08-14",
+ "invoice_number": "SMS/26-27/0412",
+ "currency": "INR",
+ "subtotal": 4145.0,
+ "tax": 746.1,
+ "total": 4891.0,
+ "payment_method": "UPI",
+ "category": "Office supplies",
+ "expect": {},
+ "items": [
+  {
+   "description": "A4 copier paper 75 GSM (ream)",
+   "qty": 10.0,
+   "amount": 2850.0
+  },
+  {
+   "description": "Gel pens, box of 10",
+   "qty": 4.0,
+   "amount": 480.0
+  },
+  {
+   "description": "Box file, foolscap",
+   "qty": 6.0,
+   "amount": 570.0
+  },
+  {
+   "description": "Stapler, heavy duty",
+   "qty": 1.0,
+   "amount": 245.0
+  }
+ ],
+ "tax_split": {
+  "cgst": 373.05,
+  "sgst": 373.05
+ },
+ "round_off": -0.1
+}

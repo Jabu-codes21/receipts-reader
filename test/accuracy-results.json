@@ -1,0 +1,869 @@
+{
+ "at": "2026-10-27T11:01:45.429Z",
+ "receipts": {
+  "au-cafe": {
+   "pass": true,
+   "why": "",
+   "ms": 6015,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Tin Roof Coffee Co",
+    "date": "2026-09-18",
+    "date_printed": "Fri 18 Sep 2026 08:12",
+    "invoice_number": "TR-20871",
+    "currency": "AUD",
+    "items": [
+     {
+      "description": "Flat white",
+      "qty": 2,
+      "amount": 9.6
+     },
+     {
+      "description": "Smashed avocado on sourdough",
+      "qty": 1,
+      "amount": 18.5
+     },
+     {
+      "description": "Banana bread, toasted",
+      "qty": 1,
+      "amount": 7
+     }
+    ],
+    "subtotal": 31.91,
+    "tax": {
+     "total": 3.19,
+     "label": "GST",
+     "rate": 10,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 35.1,
+    "payment_method": "Visa contactless",
+    "category": "Meals"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "in-gst": {
+   "pass": true,
+   "why": "",
+   "ms": 6467,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Shree Mahalakshmi Stationers",
+    "date": "2026-08-14",
+    "date_printed": "14/08/2026",
+    "invoice_number": "SMS/26-27/0412",
+    "currency": "INR",
+    "items": [
+     {
+      "description": "A4 copier paper 75 GSM (ream)",
+      "qty": 10,
+      "amount": 2850
+     },
+     {
+      "description": "Gel pens, box of 10",
+      "qty": 4,
+      "amount": 480
+     },
+     {
+      "description": "Box file, foolscap",
+      "qty": 6,
+      "amount": 570
+     },
+     {
+      "description": "Stapler, heavy duty",
+      "qty": 1,
+      "amount": 245
+     }
+    ],
+    "subtotal": 4145,
+    "tax": {
+     "total": 746.1,
+     "label": "GST",
+     "rate": 9,
+     "cgst": 373.05,
+     "sgst": 373.05,
+     "igst": null
+    },
+    "round_off": -0.1,
+    "total": 4891,
+    "payment_method": "UPI",
+    "category": "Office supplies"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "in-petrol": {
+   "pass": true,
+   "why": "",
+   "ms": 4900,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [
+    "The date is printed as \"03/09/2026\", which can be read two ways. It was read as 2026-09-03 (using the currency); the other reading is 2026-03-09. Check it if the month matters."
+   ],
+   "row": {
+    "vendor": "Jai Ambe Fuel Station",
+    "date": "2026-09-03",
+    "date_printed": "03/09/2026",
+    "invoice_number": "4410237",
+    "currency": "INR",
+    "items": [
+     {
+      "description": "Petrol (MS) 28.43 L @ 102.76",
+      "qty": 28.43,
+      "amount": 2921.47
+     }
+    ],
+    "subtotal": null,
+    "tax": {
+     "total": null,
+     "label": null,
+     "rate": null,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 2921.47,
+    "payment_method": "Card",
+    "category": "Fuel"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 0.6,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 0,
+    "tax": 0,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "uk-vat": {
+   "pass": true,
+   "why": "",
+   "ms": 5632,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Hollybush Bistro",
+    "date": "2026-09-17",
+    "date_printed": "17/09/2026",
+    "invoice_number": "30418",
+    "currency": "GBP",
+    "items": [
+     {
+      "description": "Soup of the day",
+      "qty": 1,
+      "amount": 6.5
+     },
+     {
+      "description": "Fish and chips",
+      "qty": 1,
+      "amount": 14.95
+     },
+     {
+      "description": "Sparkling water",
+      "qty": 2,
+      "amount": 6.4
+     },
+     {
+      "description": "Sticky toffee pudding",
+      "qty": 1,
+      "amount": 7.25
+     }
+    ],
+    "subtotal": 29.25,
+    "tax": {
+     "total": 5.85,
+     "label": "VAT",
+     "rate": 20,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 35.1,
+    "payment_method": "Visa contactless",
+    "category": "Meals"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 0.9,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "us-store": {
+   "pass": true,
+   "why": "",
+   "ms": 5631,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": "",
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [
+    "The date is printed as \"10/04/2026\", which can be read two ways. It was read as 2026-10-04 (using the currency); the other reading is 2026-04-10. Check it if the month matters."
+   ],
+   "row": {
+    "vendor": "Lakeview Office and Supply",
+    "date": "2026-10-04",
+    "date_printed": "10/04/2026",
+    "invoice_number": null,
+    "currency": "USD",
+    "items": [
+     {
+      "description": "Copy paper 500ct",
+      "qty": 2,
+      "amount": 17.98
+     },
+     {
+      "description": "Sticky notes 3-pack",
+      "qty": 1,
+      "amount": 5.49
+     },
+     {
+      "description": "Dry erase markers 6pk",
+      "qty": 1,
+      "amount": 6.29
+     },
+     {
+      "description": "USB-C cable 6ft",
+      "qty": 1,
+      "amount": 12.99
+     }
+    ],
+    "subtotal": 42.75,
+    "tax": {
+     "total": 3.53,
+     "label": "SALES TAX",
+     "rate": 8.25,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 46.28,
+    "payment_method": "Mastercard",
+    "category": "Office supplies"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 0.6,
+    "invoice_number": 0,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "taxi": {
+   "pass": true,
+   "why": "",
+   "ms": 3785,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Gulf Cab Co",
+    "date": "2026-09-27",
+    "date_printed": "27 Sep 2026",
+    "invoice_number": "TRIP 5589-2204",
+    "currency": "AED",
+    "items": [
+     {
+      "description": "Trip fare, Dubai Marina to DIFC",
+      "qty": 1,
+      "amount": 38.5
+     },
+     {
+      "description": "Salik toll",
+      "qty": 1,
+      "amount": 4
+     },
+     {
+      "description": "Booking fee",
+      "qty": 1,
+      "amount": 4
+     }
+    ],
+    "subtotal": 46.5,
+    "tax": {
+     "total": 2.33,
+     "label": "VAT 5%",
+     "rate": 5,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 48.83,
+    "payment_method": "Cash",
+    "category": "Travel"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "saas": {
+   "pass": true,
+   "why": "",
+   "ms": 6364,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Quillbase Software Ltd",
+    "date": "2026-10-01",
+    "date_printed": "1 October 2026",
+    "invoice_number": "INV-2026-004471",
+    "currency": "EUR",
+    "items": [
+     {
+      "description": "Pro plan, 5 seats, Oct 2026",
+      "qty": 5,
+      "amount": 60
+     },
+     {
+      "description": "Extra storage, 100 GB",
+      "qty": 2,
+      "amount": 8
+     }
+    ],
+    "subtotal": 68,
+    "tax": {
+     "total": 15.64,
+     "label": "VAT (Ireland) 23%",
+     "rate": 23,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 83.64,
+    "payment_method": "Visa",
+    "category": "Software"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "hardware": {
+   "pass": true,
+   "why": "",
+   "ms": 7366,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "WESTGATE BUILDING SUPPLIES",
+    "date": "2026-09-22",
+    "date_printed": "22/09/2026",
+    "invoice_number": "D-558201",
+    "currency": "AUD",
+    "items": [
+     {
+      "description": "Treated pine 90x45 3.0m",
+      "qty": 24,
+      "amount": 202.8
+     },
+     {
+      "description": "Plasterboard 10mm 2400x1200",
+      "qty": 8,
+      "amount": 135.2
+     },
+     {
+      "description": "Plasterboard screws 1000pk",
+      "qty": 2,
+      "amount": 29
+     },
+     {
+      "description": "General purpose cement 20kg",
+      "qty": 5,
+      "amount": 49
+     }
+    ],
+    "subtotal": 416,
+    "tax": {
+     "total": 41.6,
+     "label": "GST",
+     "rate": 0.1,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 457.6,
+    "payment_method": "On account",
+    "category": "Materials"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "mismatch": {
+   "pass": true,
+   "why": "flagged totals don't add up",
+   "ms": 3181,
+   "status": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "flags": [
+    "The date is printed as \"09/12/2026\", which can be read two ways. It was read as 2026-09-12 (using the currency); the other reading is 2026-12-09. Check it if the month matters.",
+    "Totals don't add up: items 21.75 + tax 1.74 = 23.49, but the total reads 26.49."
+   ],
+   "row": {
+    "vendor": "Corner Booth Diner",
+    "date": "2026-09-12",
+    "date_printed": "09/12/2026",
+    "invoice_number": "11902",
+    "currency": "USD",
+    "items": [
+     {
+      "description": "Classic burger",
+      "qty": 1,
+      "amount": 11.5
+     },
+     {
+      "description": "Fries",
+      "qty": 1,
+      "amount": 4.25
+     },
+     {
+      "description": "Chocolate shake",
+      "qty": 1,
+      "amount": 6
+     }
+    ],
+    "subtotal": 21.75,
+    "tax": {
+     "total": 1.74,
+     "label": "TAX 8%",
+     "rate": 8,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 26.49,
+    "payment_method": "Cash",
+    "category": "Meals"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 0.6,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "blurry": {
+   "pass": true,
+   "why": "marked needs a person",
+   "ms": 6075,
+   "status": "needs_person",
+   "score": {
+    "vendor": false,
+    "date": false,
+    "total": false,
+    "tax": false,
+    "currency": false,
+    "invoice": "",
+    "category": true,
+    "items": false,
+    "flagMismatch": false,
+    "needsPerson": true
+   },
+   "flags": [
+    "The image is too blurry or dark to read, so nothing was extracted rather than guessing. Retake it flat and well lit, or type it in by hand in the table."
+   ],
+   "row": {
+    "vendor": null,
+    "date": null,
+    "date_printed": null,
+    "invoice_number": null,
+    "currency": null,
+    "items": [],
+    "subtotal": null,
+    "tax": {
+     "total": null,
+     "label": null,
+     "rate": null,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": null,
+    "payment_method": null,
+    "category": "Other"
+   },
+   "confidence": {
+    "vendor": 0,
+    "date": 0,
+    "invoice_number": 0,
+    "currency": 0,
+    "items": 0,
+    "subtotal": 0,
+    "tax": 0,
+    "total": 0,
+    "payment_method": 0,
+    "category": 0
+   },
+   "unreadable": [
+    "vendor",
+    "date",
+    "invoice_number",
+    "currency",
+    "items",
+    "subtotal",
+    "tax",
+    "total",
+    "payment_method"
+   ]
+  },
+  "in-igst": {
+   "pass": true,
+   "why": "",
+   "ms": 5888,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Kaveri Digital Solutions",
+    "date": "2026-09-29",
+    "date_printed": "29/09/2026",
+    "invoice_number": "KDS/0098",
+    "currency": "INR",
+    "items": [
+     {
+      "description": "Wireless mouse",
+      "qty": 3,
+      "amount": 1350
+     },
+     {
+      "description": "Keyboard, wired USB",
+      "qty": 2,
+      "amount": 2500
+     },
+     {
+      "description": "USB 3.0 hub, 4 port",
+      "qty": 1,
+      "amount": 899
+     }
+    ],
+    "subtotal": 4749,
+    "tax": {
+     "total": 854.82,
+     "label": "IGST",
+     "rate": 18,
+     "cgst": null,
+     "sgst": null,
+     "igst": 854.82
+    },
+    "round_off": 0.18,
+    "total": 5604,
+    "payment_method": "Bank transfer",
+    "category": "Office supplies"
+   },
+   "confidence": {
+    "vendor": 1,
+    "date": 1,
+    "invoice_number": 1,
+    "currency": 1,
+    "items": 1,
+    "subtotal": 1,
+    "tax": 1,
+    "total": 1,
+    "payment_method": 1,
+    "category": 1
+   },
+   "unreadable": []
+  },
+  "faded": {
+   "pass": true,
+   "why": "",
+   "ms": 6851,
+   "status": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "flags": [],
+   "row": {
+    "vendor": "Cedar Grove Deli",
+    "date": "2026-10-21",
+    "date_printed": "10/21/2026",
+    "invoice_number": "Ord 2291",
+    "currency": "USD",
+    "items": [
+     {
+      "description": "Turkey sandwich",
+      "qty": 1,
+      "amount": 11.95
+     },
+     {
+      "description": "Tomato soup",
+      "qty": 1,
+      "amount": 5.5
+     },
+     {
+      "description": "Iced tea",
+      "qty": 1,
+      "amount": 3.25
+     }
+    ],
+    "subtotal": 20.7,
+    "tax": {
+     "total": 2.12,
+     "label": "TAX",
+     "rate": 0.1025,
+     "cgst": null,
+     "sgst": null,
+     "igst": null
+    },
+    "round_off": null,
+    "total": 22.82,
+    "payment_method": "Cash",
+    "category": "Meals"
+   },
+   "confidence": {
+    "vendor": 0.9,
+    "date": 0.9,
+    "invoice_number": 0.9,
+    "currency": 0.9,
+    "items": 0.9,
+    "subtotal": 0.9,
+    "tax": 0.9,
+    "total": 0.9,
+    "payment_method": 0.9,
+    "category": 0.9
+   },
+   "unreadable": []
+  }
+ },
+ "extras": {
+  "notReceipt": {
+   "pass": true,
+   "detail": "422 not_receipt"
+  },
+  "injection": {
+   "pass": true,
+   "detail": "vendor=Tin Roof Coffee Co total=35.1 category=Meals"
+  },
+  "tooBig": {
+   "pass": true,
+   "detail": "413 too_big in 72 ms"
+  },
+  "tooBigOwner": {
+   "pass": true,
+   "detail": "owner key does not bypass the size limit: 413"
+  },
+  "badType": {
+   "pass": true,
+   "detail": "415 bad_type"
+  },
+  "empty": {
+   "pass": true,
+   "detail": "400 empty"
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "id": "taxi",
+ "vendor": "Gulf Cab Co",
+ "date": "2026-09-27",
+ "invoice_number": "TRIP 5589-2204",
+ "currency": "AED",
+ "subtotal": 46.5,
+ "tax": 2.33,
+ "total": 48.83,
+ "payment_method": "Cash",
+ "category": "Travel",
+ "expect": {},
+ "items": [
+  {
+   "description": "Trip fare, Dubai Marina to DIFC",
+   "qty": 1.0,
+   "amount": 38.5
+  },
+  {
+   "description": "Salik toll",
+   "qty": 1.0,
+   "amount": 4.0
+  },
+  {
+   "description": "Booking fee",
+   "qty": 1.0,
+   "amount": 4.0
+  }
+ ]
+}

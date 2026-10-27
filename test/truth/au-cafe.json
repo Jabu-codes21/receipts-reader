@@ -1,0 +1,30 @@
+{
+ "id": "au-cafe",
+ "vendor": "Tin Roof Coffee Co",
+ "date": "2026-09-18",
+ "invoice_number": "TR-20871",
+ "currency": "AUD",
+ "subtotal": 31.91,
+ "tax": 3.19,
+ "total": 35.1,
+ "payment_method": "Visa contactless",
+ "category": "Meals",
+ "expect": {},
+ "items": [
+  {
+   "description": "Flat white",
+   "qty": 2.0,
+   "amount": 9.6
+  },
+  {
+   "description": "Smashed avocado on sourdough",
+   "qty": 1.0,
+   "amount": 18.5
+  },
+  {
+   "description": "Banana bread, toasted",
+   "qty": 1.0,
+   "amount": 7.0
+  }
+ ]
+}

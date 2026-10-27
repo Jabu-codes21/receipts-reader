@@ -1,0 +1,30 @@
+{
+ "id": "faded",
+ "vendor": "Cedar Grove Deli",
+ "date": "2026-10-21",
+ "invoice_number": "Ord 2291",
+ "currency": "USD",
+ "subtotal": 20.7,
+ "tax": 2.12,
+ "total": 22.82,
+ "payment_method": "Cash",
+ "category": "Meals",
+ "expect": {},
+ "items": [
+  {
+   "description": "Turkey sandwich",
+   "qty": 1.0,
+   "amount": 11.95
+  },
+  {
+   "description": "Tomato soup",
+   "qty": 1.0,
+   "amount": 5.5
+  },
+  {
+   "description": "Iced tea",
+   "qty": 1.0,
+   "amount": 3.25
+  }
+ ]
+}

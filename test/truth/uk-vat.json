@@ -1,0 +1,35 @@
+{
+ "id": "uk-vat",
+ "vendor": "Hollybush Bistro",
+ "date": "2026-09-17",
+ "invoice_number": "Table 7 / Chk 30418",
+ "currency": "GBP",
+ "subtotal": 29.25,
+ "tax": 5.85,
+ "total": 35.1,
+ "payment_method": "Visa contactless",
+ "category": "Meals",
+ "expect": {},
+ "items": [
+  {
+   "description": "Soup of the day",
+   "qty": 1.0,
+   "amount": 6.5
+  },
+  {
+   "description": "Fish and chips",
+   "qty": 1.0,
+   "amount": 14.95
+  },
+  {
+   "description": "Sparkling water",
+   "qty": 2.0,
+   "amount": 6.4
+  },
+  {
+   "description": "Sticky toffee pudding",
+   "qty": 1.0,
+   "amount": 7.25
+  }
+ ]
+}

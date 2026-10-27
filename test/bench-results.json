@@ -1,0 +1,959 @@
+{
+ "@cf/meta/llama-4-scout-17b-16e-instruct": {
+  "au-cafe": {
+   "ok": true,
+   "status": "ok",
+   "ms": 6758,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "in-gst": {
+   "ok": true,
+   "status": "ok",
+   "ms": 6485,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "in-petrol": {
+   "ok": true,
+   "status": "ok",
+   "ms": 4411,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "uk-vat": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5629,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "us-store": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5819,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": false,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "taxi": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5910,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "saas": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5409,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "hardware": {
+   "ok": true,
+   "status": "ok",
+   "ms": 6758,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "mismatch": {
+   "ok": true,
+   "status": "check",
+   "ms": 4348,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "totals_mismatch"
+   ]
+  },
+  "blurry": {
+   "ok": false,
+   "status": 422,
+   "ms": 3722,
+   "flagsStatus": 422,
+   "score": null,
+   "err": "That does not look like a receipt or invoice. Try a clearer photo of the paper, flat and well lit.",
+   "unflag": null
+  },
+  "in-igst": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5463,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "faded": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5073,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  }
+ },
+ "@cf/meta/llama-3.2-11b-vision-instruct": {
+  "au-cafe": {
+   "ok": true,
+   "status": "check",
+   "ms": 30352,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": false,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": false,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "bad_date"
+   ]
+  },
+  "in-gst": {
+   "ok": true,
+   "status": "check",
+   "ms": 19830,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": false,
+    "date": true,
+    "total": false,
+    "tax": false,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": false,
+    "split": true,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "tax_split",
+    "totals_mismatch"
+   ]
+  },
+  "in-petrol": {
+   "ok": true,
+   "status": "check",
+   "ms": 14373,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": false,
+    "date": false,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": "",
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "low_confidence"
+   ]
+  },
+  "uk-vat": {
+   "ok": true,
+   "status": "ok",
+   "ms": 7301,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": "",
+    "category": false,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "us-store": {
+   "ok": true,
+   "status": "check",
+   "ms": 14089,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": false,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": "",
+    "category": false,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "low_confidence"
+   ]
+  },
+  "taxi": {
+   "ok": true,
+   "status": "check",
+   "ms": 8125,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": false,
+    "currency": true,
+    "invoice": "",
+    "category": false,
+    "items": false,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "totals_mismatch"
+   ]
+  },
+  "saas": {
+   "ok": false,
+   "status": 503,
+   "ms": 5501,
+   "flagsStatus": 503,
+   "score": null,
+   "unflag": null
+  },
+  "hardware": {
+   "ok": false,
+   "status": 503,
+   "ms": 4895,
+   "flagsStatus": 503,
+   "score": null,
+   "unflag": null
+  },
+  "mismatch": {
+   "ok": true,
+   "status": "ok",
+   "ms": 7717,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": false,
+    "tax": true,
+    "currency": true,
+    "invoice": "",
+    "category": false,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "blurry": {
+   "ok": true,
+   "status": "needs_person",
+   "ms": 11762,
+   "flagsStatus": "needs_person",
+   "score": {
+    "vendor": false,
+    "date": false,
+    "total": false,
+    "tax": false,
+    "currency": false,
+    "invoice": "",
+    "category": true,
+    "items": false,
+    "flagMismatch": false,
+    "needsPerson": true
+   },
+   "err": null,
+   "unflag": [
+    "no_total",
+    "low_confidence"
+   ]
+  },
+  "in-igst": {
+   "ok": false,
+   "status": 503,
+   "ms": 13187,
+   "flagsStatus": 503,
+   "score": null,
+   "unflag": null
+  },
+  "faded": {
+   "ok": true,
+   "status": "ok",
+   "ms": 7343,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": false,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": false,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  }
+ },
+ "@cf/google/gemma-4-26b-a4b-it": {
+  "au-cafe": {
+   "ok": true,
+   "status": "ok",
+   "ms": 2782,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "in-gst": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5478,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "in-petrol": {
+   "ok": true,
+   "status": "ok",
+   "ms": 4890,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "uk-vat": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5731,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "us-store": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5578,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "taxi": {
+   "ok": true,
+   "status": "ok",
+   "ms": 6100,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "saas": {
+   "ok": true,
+   "status": "ok",
+   "ms": 4709,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "hardware": {
+   "ok": true,
+   "status": "ok",
+   "ms": 3436,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "mismatch": {
+   "ok": true,
+   "status": "check",
+   "ms": 3845,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "totals_mismatch"
+   ]
+  },
+  "blurry": {
+   "ok": true,
+   "status": "needs_person",
+   "ms": 4674,
+   "flagsStatus": "needs_person",
+   "score": {
+    "vendor": false,
+    "date": false,
+    "total": false,
+    "tax": false,
+    "currency": false,
+    "invoice": "",
+    "category": false,
+    "items": false,
+    "flagMismatch": false,
+    "needsPerson": true
+   },
+   "err": null,
+   "unflag": [
+    "low_confidence",
+    "hard_to_read"
+   ]
+  },
+  "in-igst": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5771,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "faded": {
+   "ok": true,
+   "status": "ok",
+   "ms": 5599,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  }
+ },
+ "@cf/mistralai/mistral-small-3.1-24b-instruct": {
+  "au-cafe": {
+   "ok": true,
+   "status": "ok",
+   "ms": 9558,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "in-gst": {
+   "ok": true,
+   "status": "ok",
+   "ms": 7919,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "split": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "in-petrol": {
+   "ok": true,
+   "status": "ok",
+   "ms": 4349,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "uk-vat": {
+   "ok": true,
+   "status": "ok",
+   "ms": 8259,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "us-store": {
+   "ok": true,
+   "status": "ok",
+   "ms": 10109,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": false,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "taxi": {
+   "ok": true,
+   "status": "ok",
+   "ms": 12149,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "saas": {
+   "ok": true,
+   "status": "ok",
+   "ms": 8745,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  },
+  "hardware": {
+   "ok": true,
+   "status": "check",
+   "ms": 9579,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": false,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "totals_mismatch"
+   ]
+  },
+  "mismatch": {
+   "ok": true,
+   "status": "check",
+   "ms": 8352,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "totals_mismatch"
+   ]
+  },
+  "blurry": {
+   "ok": true,
+   "status": "needs_person",
+   "ms": 4021,
+   "flagsStatus": "needs_person",
+   "score": {
+    "vendor": false,
+    "date": false,
+    "total": false,
+    "tax": false,
+    "currency": false,
+    "invoice": "",
+    "category": true,
+    "items": false,
+    "flagMismatch": false,
+    "needsPerson": true
+   },
+   "err": null,
+   "unflag": [
+    "no_total"
+   ]
+  },
+  "in-igst": {
+   "ok": true,
+   "status": "check",
+   "ms": 10328,
+   "flagsStatus": "check",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": false,
+    "split": true,
+    "flagMismatch": true,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": [
+    "totals_mismatch"
+   ]
+  },
+  "faded": {
+   "ok": true,
+   "status": "ok",
+   "ms": 8520,
+   "flagsStatus": "ok",
+   "score": {
+    "vendor": true,
+    "date": true,
+    "total": true,
+    "tax": true,
+    "currency": true,
+    "invoice": true,
+    "category": true,
+    "items": true,
+    "flagMismatch": false,
+    "needsPerson": false
+   },
+   "err": null,
+   "unflag": []
+  }
+ }
+}

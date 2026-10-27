@@ -1,0 +1,12 @@
+llama-3.2-11b-vision-instruct au-cafe   YnYYY inv:Y cat:n items:Y st:check flags:bad_date 30352ms
+llama-3.2-11b-vision-instruct in-gst    nYnnY inv:Y cat:Y items:n st:check flags:tax_split,totals_mismatch 19830ms
+llama-3.2-11b-vision-instruct in-petrol nnYYY inv:n cat:Y items:Y st:check flags:low_confidence 14373ms
+llama-3.2-11b-vision-instruct uk-vat    YYYYY inv:n cat:n items:Y st:ok flags: 7301ms
+llama-3.2-11b-vision-instruct us-store  nYYYY inv:n cat:n items:Y st:check flags:low_confidence 14089ms
+llama-3.2-11b-vision-instruct taxi      YYYnY inv:n cat:n items:n st:check flags:totals_mismatch 8125ms
+llama-3.2-11b-vision-instruct saas      FAIL undefined 5501ms
+llama-3.2-11b-vision-instruct hardware  FAIL undefined 4895ms
+llama-3.2-11b-vision-instruct mismatch  YYnYY inv:n cat:n items:Y st:ok flags: 7717ms
+llama-3.2-11b-vision-instruct blurry    nnnnn inv:n cat:Y items:n st:needs_person flags:no_total,low_confidence 11762ms
+llama-3.2-11b-vision-instruct in-igst   FAIL undefined 13187ms
+llama-3.2-11b-vision-instruct faded     YnYYY inv:Y cat:n items:Y st:ok flags: 7343ms

@@ -1,0 +1,20 @@
+{
+ "id": "in-petrol",
+ "vendor": "Jai Ambe Fuel Station",
+ "date": "2026-09-03",
+ "invoice_number": "4410237",
+ "currency": "INR",
+ "subtotal": null,
+ "tax": null,
+ "total": 2921.47,
+ "payment_method": "Card",
+ "category": "Fuel",
+ "expect": {},
+ "items": [
+  {
+   "description": "Petrol (MS)  28.43 L @ 102.76",
+   "qty": 28.43,
+   "amount": 2921.47
+  }
+ ]
+}

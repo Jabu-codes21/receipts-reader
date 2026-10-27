@@ -1,0 +1,26 @@
+{
+  // Receipts reader: PORTFOLIO DEMO. Public. Fictional sample receipts only; visitors' images are never stored.
+  // Secret (never in this file): OWNER_KEY. Local: a dev-vars file (see the example). Deployed later: npx wrangler secret put OWNER_KEY
+  "name": "receipts-reader-demo",
+  // same account as eklavyashetty.com and the other portfolio demos
+  "account_id": "8f5947a7b20b2cad2137ae8d9b187094",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "routes": [ { "pattern": "receipts.allforone.co.in", "custom_domain": true } ],
+  "preview_urls": false,
+  "ai": { "binding": "AI" },
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": true },
+  "durable_objects": { "bindings": [ { "name": "COUNTER", "class_name": "Counter" } ] },
+  "migrations": [ { "tag": "v1", "new_sqlite_classes": ["Counter"] } ],
+  "rules": [ { "type": "Text", "globs": ["**/*.html"], "fallthrough": true } ],
+  "observability": { "enabled": true },
+  "vars": {
+    "MODEL": "@cf/google/gemma-4-26b-a4b-it",
+    // abuse limits per day (reset midnight IST): receipts per visitor (cookie), per IP, all visitors
+    "VISITOR_DAILY_MAX": "10",
+    "IP_DAILY_MAX": "30",
+    "GLOBAL_DAILY_MAX": "400",
+    "MAX_IMAGE_BYTES": "4194304"
+  }
+}

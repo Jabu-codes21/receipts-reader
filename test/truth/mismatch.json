@@ -1,0 +1,32 @@
+{
+ "id": "mismatch",
+ "vendor": "Corner Booth Diner",
+ "date": "2026-09-12",
+ "invoice_number": "Check 11902",
+ "currency": "USD",
+ "subtotal": 21.75,
+ "tax": 1.74,
+ "total": 26.49,
+ "payment_method": "Cash",
+ "category": "Meals",
+ "expect": {
+  "totals_mismatch": true
+ },
+ "items": [
+  {
+   "description": "Classic burger",
+   "qty": 1.0,
+   "amount": 11.5
+  },
+  {
+   "description": "Fries",
+   "qty": 1.0,
+   "amount": 4.25
+  },
+  {
+   "description": "Chocolate shake",
+   "qty": 1.0,
+   "amount": 6.0
+  }
+ ]
+}

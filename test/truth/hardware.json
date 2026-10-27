@@ -1,0 +1,35 @@
+{
+ "id": "hardware",
+ "vendor": "Westgate Building Supplies",
+ "date": "2026-09-22",
+ "invoice_number": "D-558201",
+ "currency": "AUD",
+ "subtotal": 416.0,
+ "tax": 41.6,
+ "total": 457.6,
+ "payment_method": "On account",
+ "category": "Materials",
+ "expect": {},
+ "items": [
+  {
+   "description": "Treated pine 90x45 3.0m",
+   "qty": 24.0,
+   "amount": 202.8
+  },
+  {
+   "description": "Plasterboard 10mm 2400x1200",
+   "qty": 8.0,
+   "amount": 135.2
+  },
+  {
+   "description": "Plasterboard screws 1000pk",
+   "qty": 2.0,
+   "amount": 29.0
+  },
+  {
+   "description": "General purpose cement 20kg",
+   "qty": 5.0,
+   "amount": 49.0
+  }
+ ]
+}

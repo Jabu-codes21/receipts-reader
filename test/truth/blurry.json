@@ -1,0 +1,32 @@
+{
+ "id": "blurry",
+ "vendor": "Lotus Pharmacy",
+ "date": "2026-10-05",
+ "invoice_number": "LP-30551",
+ "currency": "AUD",
+ "subtotal": null,
+ "tax": 2.54,
+ "total": 32.94,
+ "payment_method": "EFTPOS",
+ "category": "Other",
+ "expect": {
+  "unreadable": true
+ },
+ "items": [
+  {
+   "description": "Paracetamol 500mg x20",
+   "qty": 1.0,
+   "amount": 4.95
+  },
+  {
+   "description": "Vitamin C 1000mg x60",
+   "qty": 1.0,
+   "amount": 16.99
+  },
+  {
+   "description": "Hand sanitiser 250ml",
+   "qty": 2.0,
+   "amount": 11.0
+  }
+ ]
+}

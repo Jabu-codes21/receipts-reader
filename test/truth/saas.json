@@ -1,0 +1,25 @@
+{
+ "id": "saas",
+ "vendor": "Quillbase Software Ltd",
+ "date": "2026-10-01",
+ "invoice_number": "INV-2026-004471",
+ "currency": "EUR",
+ "subtotal": 68.0,
+ "tax": 15.64,
+ "total": 83.64,
+ "payment_method": "Visa ending 4242",
+ "category": "Software",
+ "expect": {},
+ "items": [
+  {
+   "description": "Pro plan, 5 seats, Oct 2026",
+   "qty": 5.0,
+   "amount": 60.0
+  },
+  {
+   "description": "Extra storage, 100 GB",
+   "qty": 2.0,
+   "amount": 8.0
+  }
+ ]
+}

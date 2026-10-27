@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Demo of an AI receipts-to-expenses reader. Upload a receipt photo, get a checked expense row. Built by Eklavya Shetty.">
+<title>Receipts reader (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martel:wght@400;700;800&family=Martel+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F3F0E6;--paper2:#E9E4D4;--card:#FFFEFA;--ink:#1C2623;--ink2:#46524E;--ink3:#66726E;--rule:rgba(28,38,35,.16);--green:#1E5A45;--green2:#12402F;--stamp:#B4471E;--stamp2:#8E3513;--ok:#2A6B47;--warn:#8F5E0C;--bad:#A32D2D}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 "Martel Sans",Georgia,serif}
+a{color:inherit}
+.demo{background:var(--green2);color:#F3F0E6;font-size:13px;line-height:1.4;padding:8px 16px;text-align:center}
+.demo b{font-weight:700}
+.demo a{color:#F3C9A6;text-underline-offset:2px}
+header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--rule)}
+.mark{flex:none;width:40px;height:40px}
+header h1{margin:0;font:800 18px/1.1 Martel,serif;color:var(--green)}
+header p{margin:3px 0 0;font-size:12.5px;color:var(--ink3)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.hero{padding:26px 0 8px}
+.hero h2{font:800 clamp(26px,6.4vw,38px)/1.12 Martel,serif;color:var(--green);margin:0 0 10px;max-width:16em}
+.hero p{margin:0 0 6px;color:var(--ink2);max-width:40em}
+.btn{font:700 15px/1.2 "Martel Sans",sans-serif;color:var(--green);background:var(--card);border:1.5px solid var(--green);border-radius:4px;padding:12px 16px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px}
+.btn:hover{background:var(--green);color:#fff}
+.btn.solid{background:var(--stamp);border-color:var(--stamp);color:#fff}
+.btn.solid:hover{background:var(--stamp2);border-color:var(--stamp2)}
+.btn.small{font-size:13px;padding:7px 11px;min-height:0;border-width:1px}
+.btn.ghost{border-color:var(--rule);color:var(--ink2)}
+.btn:disabled{opacity:.5;cursor:default}
+.drop{margin:18px 0 8px;border:2px dashed rgba(30,90,69,.45);border-radius:6px;background:var(--card);padding:20px 16px;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+.drop.over{background:#EAF3EE;border-color:var(--green)}
+.drop .hint{flex:1 1 220px;font-size:13.5px;color:var(--ink3)}
+.samples h3,.sec h3{font:700 12px/1 "Martel Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin:22px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.sample{display:flex;flex-direction:column;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:0;cursor:pointer;overflow:hidden;font:inherit;color:inherit}
+.sample:hover{border-color:var(--green)}
+.sample img{width:100%;height:120px;object-fit:cover;object-position:top;background:var(--paper2);display:block}
+.sample span{padding:8px 10px 10px;font-size:13px;line-height:1.35}
+.sample b{display:block;font-weight:700;font-size:13.5px}
+.sample small{color:var(--ink3)}
+.note{display:none;margin:14px 0 0;padding:11px 14px;border:1px solid var(--stamp);background:#FBEFE6;border-radius:4px;font-size:14px}
+.note.show{display:block}
+.busy{display:none;margin:16px 0 0;align-items:center;gap:10px;color:var(--ink2);font-size:14px}
+.busy.show{display:flex}
+.dots{display:inline-flex;gap:4px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--green);animation:b 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{opacity:.25}}
+/* result slip */
+.slip{display:none;margin:22px 0 0;background:var(--card);border:1px solid var(--rule);border-radius:6px;position:relative}
+.slip.show{display:block}
+.slip::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:9px;background:linear-gradient(-45deg,transparent 6px,var(--card) 0) 0 0/12px 9px,linear-gradient(45deg,transparent 6px,var(--card) 0) 0 0/12px 9px;background-repeat:repeat-x;filter:drop-shadow(0 1px 0 var(--rule))}
+.slip-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 16px;border-bottom:1px dashed var(--rule)}
+.slip-h img{width:54px;height:72px;object-fit:cover;object-position:top;border:1px solid var(--rule);border-radius:3px;background:var(--paper2)}
+.slip-h .ttl{flex:1 1 200px;min-width:0}
+.slip-h .ttl b{display:block;font:800 19px/1.15 Martel,serif;overflow-wrap:anywhere}
+.slip-h .ttl small{color:var(--ink3);font-size:13px}
+.pill{display:inline-block;font:700 11.5px/1 "Martel Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:3px;border:1.5px solid;white-space:nowrap}
+.pill.ok{color:var(--ok);border-color:var(--ok);background:#EDF6F0}
+.pill.check{color:var(--warn);border-color:var(--warn);background:#FBF3E1}
+.pill.needs_person{color:#fff;border-color:var(--bad);background:var(--bad)}
+.pill.reviewed{color:var(--green);border-color:var(--green);background:transparent}
+.slip-b{padding:6px 16px 20px;display:grid;gap:0 28px}
+.fields{margin:8px 0 0}
+.f{display:grid;grid-template-columns:104px 1fr 54px;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px solid rgba(28,38,35,.07);font-size:14.5px}
+.f dt{color:var(--ink3);font-size:12.5px}
+.f dd{margin:0;overflow-wrap:anywhere}
+.f dd.none{color:var(--ink3);font-style:italic}
+.f.tot dd{font:800 18px/1.3 Martel,serif}
+.num{font-variant-numeric:tabular-nums}
+.conf{height:5px;border-radius:3px;background:var(--paper2);position:relative;overflow:hidden;align-self:center}
+.conf i{position:absolute;left:0;top:0;bottom:0;background:var(--ok)}
+.conf.mid i{background:#C48A1C}.conf.low i{background:var(--bad)}
+.items{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.items th{font:700 11px/1 "Martel Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:6px 0;border-bottom:1px solid var(--rule)}
+.items td{padding:6px 0;border-bottom:1px solid rgba(28,38,35,.07);vertical-align:top}
+.items .r{text-align:right;white-space:nowrap;padding-left:10px}
+.flags{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.flags li{padding:9px 12px;border-left:4px solid var(--warn);background:#FBF3E1;border-radius:2px;font-size:14px}
+.flags li.bad{border-color:var(--bad);background:#FBEAEA}
+.flags li.info{border-color:var(--ink3);background:var(--paper)}
+.unread{margin:12px 0 0;font-size:13.5px;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font:600 12px/1.3 "Martel Sans",sans-serif;color:var(--ink2);border:1px solid var(--rule);border-radius:3px;padding:3px 8px;background:var(--paper)}
+.chip::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink3);margin-right:6px;vertical-align:1px}
+.chip.read{color:var(--green);border-color:rgba(30,90,69,.4)}.chip.read::before{background:var(--green)}
+.chip.check,.chip.split,.chip.saved{color:var(--ok);border-color:rgba(42,107,71,.5);background:#EEF6F0}.chip.check::before,.chip.split::before,.chip.saved::before{background:var(--ok)}
+.chip.flag{color:var(--warn);border-color:rgba(143,94,12,.5);background:#FBF4E6}.chip.flag::before{background:var(--warn)}
+.chip.person{color:#fff;border-color:var(--bad);background:var(--bad)}.chip.person::before{background:#fff}
+/* table */
+.sec{margin:34px 0 0}
+.sec-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 10px}
+.sec-h h2{font:800 22px/1.15 Martel,serif;color:var(--green);margin:0;flex:1 1 auto}
+.tw{background:var(--card);border:1px solid var(--rule);border-radius:6px;overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:14px;min-width:860px}
+.t th{font:700 11px/1.2 "Martel Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:10px 10px;border-bottom:1.5px solid var(--ink);white-space:nowrap}
+.t td{padding:4px 6px;border-bottom:1px solid rgba(28,38,35,.08);vertical-align:middle}
+.t td.e{cursor:text;border-radius:3px;padding:8px 6px}
+.t td.e:hover{background:#F1F5F2;outline:1px dashed rgba(30,90,69,.4)}
+.t td.r,.t th.r{text-align:right}
+.t td[data-f=date],.t td[data-f=total],.t td[data-f=subtotal],.t td[data-f=tax]{white-space:nowrap}
+.t td.ed::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--stamp);margin-left:5px;vertical-align:2px}
+.t tr.np td{background:#FCF1F1}
+.t input,.t select{font:400 14px "Martel Sans",sans-serif;width:100%;min-width:70px;padding:6px;border:1.5px solid var(--green);border-radius:3px;background:#fff;color:var(--ink)}
+.t tfoot td{border-bottom:0;padding:9px 10px;font-weight:700}
+.empty{padding:22px 16px;color:var(--ink3);font-size:14.5px}
+.tnote{font-size:12.5px;color:var(--ink3);margin:8px 0 0}
+.xrow td{background:var(--paper);font-size:13.5px;padding:10px 14px}
+.x{background:none;border:0;color:var(--ink3);cursor:pointer;font:inherit;font-size:18px;line-height:1;padding:4px 7px}
+.x:hover{color:var(--bad)}
+.how{margin:34px 0 0;display:grid;gap:12px;grid-template-columns:1fr}
+.how div{background:var(--card);border:1px solid var(--rule);border-radius:5px;padding:12px 14px;font-size:14px;color:var(--ink2)}
+.how b{display:block;font:800 15px Martel,serif;color:var(--green);margin-bottom:3px}
+footer{max-width:980px;margin:30px auto 0;padding:16px 16px calc(24px + env(safe-area-inset-bottom));font-size:12.5px;color:var(--ink3);border-top:1px solid var(--rule)}
+:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+@media (min-width:640px){.grid{grid-template-columns:repeat(4,1fr)}.how{grid-template-columns:repeat(3,1fr)}.slip-b{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}header{padding:14px 24px}}
+@media (max-width:640px){
+  table.t{min-width:0}.t thead{display:none}
+  .t tr{display:block;border-bottom:1px solid var(--rule);padding:8px 10px}
+  .t td{display:flex;justify-content:space-between;gap:12px;border:0;padding:5px 2px;text-align:right}
+  .t td::before{content:attr(data-l);font:700 11px "Martel Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);text-align:left;flex:none;padding-top:2px}
+  .t td.act::before{content:""}
+  .t tr.xrow{padding:0}.t tr.xrow td{display:block;text-align:left}.t tr.xrow td::before{content:none}
+  .t tfoot tr{display:block}.t tfoot td{display:flex;justify-content:space-between}
+  .f{grid-template-columns:92px 1fr 44px}
+}
+@media (prefers-reduced-motion:reduce){.dots i{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo"><b>Demo.</b> Upload your own receipt or try a sample. Images are not stored. Built by <a href="https://eklavyashetty.com" target="_blank" rel="noopener">Eklavya Shetty</a></div>
+<header>
+  <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#1E5A45"/><path d="M11 8h18v24l-3-2.2-3 2.2-3-2.2-3 2.2-3-2.2-3 2.2z" fill="#F3F0E6"/><path d="M15 15h10M15 19.5h10" stroke="#1E5A45" stroke-width="1.8" stroke-linecap="round"/><path d="M15 24.2l2.4 2.4 5-5.2" fill="none" stroke="#B4471E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div><h1>Receipts reader</h1><p>Photo of a receipt in, checked expense row out</p></div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <h2>Photograph a receipt. Get an expense row.</h2>
+    <p>The AI reads vendor, date, line items, tax and total. Plain code then checks the sums and the date, and marks anything it is not sure about for a person. Works on Australian, Indian (CGST, SGST, IGST), UK, UAE, US and EU receipts.</p>
+  </section>
+
+  <div class="drop" id="drop">
+    <button type="button" class="btn solid" id="snap">Take a photo</button>
+    <button type="button" class="btn" id="pick">Choose a file</button>
+    <span class="hint">or drop an image here. Photos are shrunk in your browser before upload and are never stored.</span>
+    <input type="file" id="fcam" accept="image/*" capture="environment" hidden>
+    <input type="file" id="ffile" accept="image/*" hidden>
+  </div>
+  <div class="note" id="note" role="alert"></div>
+  <div class="busy" id="busy" role="status"><span class="dots"><i></i><i></i><i></i></span><span id="busytxt">Reading the receipt</span></div>
+
+  <section class="samples">
+    <h3>Or try a sample (all made up)</h3>
+    <div class="grid" id="samples">
+      <button type="button" class="sample" data-s="au-cafe"><img src="/samples/au-cafe.jpg" alt="Sample cafe tax invoice" loading="lazy"><span><b>Cafe, Perth</b><small>Tax invoice, 10% GST</small></span></button>
+      <button type="button" class="sample" data-s="in-gst"><img src="/samples/in-gst.jpg" alt="Sample Indian GST invoice photographed on a desk" loading="lazy"><span><b>Stationers, India</b><small>GST invoice, CGST + SGST</small></span></button>
+      <button type="button" class="sample" data-s="saas"><img src="/samples/saas.jpg" alt="Sample software invoice" loading="lazy"><span><b>Software invoice</b><small>PDF style, EUR with VAT</small></span></button>
+      <button type="button" class="sample" data-s="mismatch"><img src="/samples/mismatch.jpg" alt="Sample diner check" loading="lazy"><span><b>Diner check</b><small>The printed total is wrong</small></span></button>
+    </div>
+  </section>
+
+  <article class="slip" id="slip" aria-live="polite"></article>
+
+  <section class="sec">
+    <div class="sec-h">
+      <h2>Your receipts</h2>
+      <button type="button" class="btn small" id="csv">Download CSV</button>
+      <button type="button" class="btn small ghost" id="clear">Clear table</button>
+    </div>
+    <div class="tw"><table class="t" id="tbl"><thead><tr><th>Date</th><th>Vendor</th><th>Invoice no.</th><th>Category</th><th>Cur.</th><th class="r">Subtotal</th><th class="r">Tax</th><th class="r">Total</th><th>Paid by</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody><tfoot id="tf"></tfoot></table><div class="empty" id="empty">Nothing here yet. Read a receipt or a sample and it lands in this table.</div></div>
+    <p class="tnote">Click any cell to correct it (a dot marks cells you changed). The table lives only in this browser, on this device. Clearing the site's data removes it.</p>
+  </section>
+
+  <section class="how">
+    <div><b>1. The AI reads</b>One vision model call turns the photo into fields, with a 0 to 1 confidence for each and a list of what it could not read.</div>
+    <div><b>2. Code checks</b>Line items plus tax must equal the total. The date must be a real date. Indian GST must split cleanly. A missing total means a person.</div>
+    <div><b>3. You stay in charge</b>Edit any cell, mark a row reviewed, and download the table as CSV for your accountant or spreadsheet.</div>
+  </section>
+</div>
+<footer>A portfolio demo by <a href="https://eklavyashetty.com" target="_blank" rel="noopener">Eklavya Shetty</a>. Sample receipts are fictional businesses. Limit: __VISITOR_CAP__ receipts per visitor per day. Please do not upload anything you would not want read by an AI model.</footer>
+
+<script>
+(function(){
+var CATS=["Meals","Travel","Fuel","Office supplies","Software","Materials","Utilities","Other"];
+var $=function(i){return document.getElementById(i);};
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+var KEY="rr-table-v1", rows=[], busy=false, lastUrl=null;
+try{rows=JSON.parse(localStorage.getItem(KEY)||"[]"); if(!Array.isArray(rows))rows=[];}catch(e){rows=[];}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(rows));}catch(e){}}
+function uid(){return "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+
+/* ---------- formatting ---------- */
+function money(v){return v==null||v===""?"":Number(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});}
+function numIn(s){s=String(s).replace(/[^\d.,\-]/g,"");var lc=s.lastIndexOf(","),ld=s.lastIndexOf(".");if(lc>-1&&ld>-1)s=lc>ld?s.replace(/\./g,"").replace(",","."):s.replace(/,/g,"");else if(lc>-1)s=/,\d{2}$/.test(s)?s.replace(",","."):s.replace(/,/g,"");var n=parseFloat(s);return isFinite(n)?Math.round(n*100)/100:null;}
+function realDate(s){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s);if(!m)return false;var d=new Date(Date.UTC(+m[1],+m[2]-1,+m[3]));return d.getUTCFullYear()==+m[1]&&d.getUTCMonth()==+m[2]-1&&d.getUTCDate()==+m[3];}
+var STATUS={ok:"Read",check:"Check",needs_person:"Needs a person"};
+
+/* ---------- image prep: long edge <= 1600 px, under 1.5 MB ---------- */
+function loadBitmap(file){
+  if(window.createImageBitmap){return createImageBitmap(file,{imageOrientation:"from-image"}).catch(function(){return viaImg(file);});}
+  return viaImg(file);
+}
+function viaImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),i=new Image();i.onload=function(){URL.revokeObjectURL(u);res(i);};i.onerror=function(){URL.revokeObjectURL(u);rej(new Error("decode"));};i.src=u;});}
+function toBlob(c,q){return new Promise(function(res){c.toBlob(res,"image/jpeg",q);});}
+async function prep(file){
+  var bmp=await loadBitmap(file), w=bmp.width||bmp.naturalWidth, h=bmp.height||bmp.naturalHeight;
+  var scale=Math.min(1,1600/Math.max(w,h)), q=0.86, blob;
+  for(var n=0;n<8;n++){
+    var c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*scale));c.height=Math.max(1,Math.round(h*scale));
+    var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(bmp,0,0,c.width,c.height);
+    blob=await toBlob(c,q);
+    if(blob&&blob.size<=1.5*1024*1024)return blob;
+    if(q>0.55)q-=0.1;else scale*=0.85;
+  }
+  return blob;
+}
+
+/* ---------- reading ---------- */
+function notice(t){var n=$("note");n.textContent=t||"";n.classList.toggle("show",!!t);}
+function setBusy(on,t){busy=on;$("busy").classList.toggle("show",on);if(t)$("busytxt").textContent=t;["snap","pick"].forEach(function(i){$(i).disabled=on;});}
+async function handle(fileOrBlob){
+  if(busy)return; notice("");
+  if(!/^image\//.test(fileOrBlob.type||"image/jpeg")){notice("Please choose an image of a receipt (JPEG, PNG or WebP).");return;}
+  setBusy(true,"Shrinking the photo");
+  var blob;
+  try{blob=await prep(fileOrBlob);}catch(e){setBusy(false);notice("That image could not be opened. If it is a HEIC photo, take it with the camera button or save it as JPEG first.");return;}
+  setBusy(true,"Reading the receipt (about 5 seconds)");
+  try{
+    var r=await fetch("/api/read",{method:"POST",headers:{"content-type":"image/jpeg"},body:blob});
+    var d=await r.json().catch(function(){return {};});
+    if(!r.ok||!d.ok){notice(d.message||"Something went wrong. Please try again.");}
+    else{
+      if(lastUrl)URL.revokeObjectURL(lastUrl); lastUrl=URL.createObjectURL(blob);
+      var row=addRow(d); showSlip(d,row,lastUrl);
+    }
+  }catch(e){notice("Could not reach the reader. Check your connection and try again.");}
+  setBusy(false);
+}
+function addRow(d){
+  var r=d.row,t=r.tax||{};
+  var row={id:uid(),vendor:r.vendor||"",date:r.date||"",invoice:r.invoice_number||"",category:r.category||"Other",currency:r.currency||"",subtotal:r.subtotal,tax:t.total,total:r.total,payment:r.payment_method||"",status:d.status,flags:(d.flags||[]).filter(function(f){return !f.info;}).map(function(f){return f.text;}),items:r.items||[],cgst:t.cgst,sgst:t.sgst,igst:t.igst,taxLabel:t.label||"",edited:{},reviewed:false};
+  rows.unshift(row); rows=rows.slice(0,200); save(); renderTable(); return row;
+}
+
+/* ---------- result slip ---------- */
+function field(dl,label,val,conf,cls){
+  var f=el("div","f"+(cls?" "+cls:"")); f.appendChild(el("dt",null,label));
+  var dd=el("dd",val==null||val===""?"none":"num",val==null||val===""?"not read":val); f.appendChild(dd);
+  var c=el("div","conf"+(conf==null?"":conf<.5?" low":conf<.8?" mid":"")); if(conf!=null){var i=document.createElement("i");i.style.width=Math.round(conf*100)+"%";c.appendChild(i);c.title="Confidence "+Math.round(conf*100)+"%";}
+  f.appendChild(c); dl.appendChild(f);
+}
+function showSlip(d,row,imgUrl){
+  var s=$("slip"); s.textContent=""; var r=d.row,c=d.confidence||{},t=r.tax||{};
+  var h=el("div","slip-h"); var im=document.createElement("img"); im.src=imgUrl; im.alt="The receipt you sent (kept only in your browser)"; h.appendChild(im);
+  var tt=el("div","ttl"); tt.appendChild(el("b",null,r.vendor||"Vendor not read")); tt.appendChild(el("small",null,[r.date,r.invoice_number].filter(Boolean).join("  ·  ")||"No date or number read")); h.appendChild(tt);
+  h.appendChild(el("span","pill "+d.status,STATUS[d.status])); s.appendChild(h);
+  var b=el("div","slip-b"), left=el("div"), right=el("div");
+  var dl=el("dl","fields");
+  field(dl,"Vendor",r.vendor,c.vendor); field(dl,"Date",r.date,c.date); field(dl,"Invoice no.",r.invoice_number,c.invoice_number); field(dl,"Currency",r.currency,c.currency); field(dl,"Category",r.category,c.category); field(dl,"Paid by",r.payment_method,c.payment_method);
+  left.appendChild(dl);
+  var dl2=el("dl","fields"); field(dl2,"Subtotal",money(r.subtotal),c.subtotal);
+  var tl="Tax"+(t.label?" ("+t.label+(t.rate&&t.cgst==null&&t.sgst==null?" "+(t.rate<1?Math.round(t.rate*1000)/10:t.rate)+"%":"")+")":"");
+  field(dl2,tl,money(t.total),c.tax);
+  if(t.cgst!=null)field(dl2,"CGST",money(t.cgst),c.tax); if(t.sgst!=null)field(dl2,"SGST",money(t.sgst),c.tax); if(t.igst!=null)field(dl2,"IGST",money(t.igst),c.tax);
+  if(r.round_off!=null)field(dl2,"Round off",money(r.round_off),null);
+  field(dl2,"Total"+(r.currency?" ("+r.currency+")":""),money(r.total),c.total,"tot"); right.appendChild(dl2);
+  if(r.items&&r.items.length){
+    var tb=el("table","items"),th=el("thead"),hr=el("tr");["Item","Qty","Amount"].forEach(function(x,i){hr.appendChild(el("th",i?"r":null,x));});th.appendChild(hr);tb.appendChild(th);
+    var body=el("tbody");r.items.forEach(function(it){var tr=el("tr");tr.appendChild(el("td",null,it.description||"(no description)"));tr.appendChild(el("td","r num",String(it.qty)));tr.appendChild(el("td","r num",money(it.amount)));body.appendChild(tr);});tb.appendChild(body);right.appendChild(tb);
+  }
+  b.appendChild(left); b.appendChild(right); s.appendChild(b);
+  var foot=el("div"); foot.style.padding="0 16px 22px";
+  if(d.flags&&d.flags.length){var ul=el("ul","flags");d.flags.forEach(function(f){ul.appendChild(el("li",f.info?"info":f.code==="totals_mismatch"||f.code==="no_total"||f.code==="hard_to_read"?"bad":"",f.text));});foot.appendChild(ul);}
+  if(d.unreadable&&d.unreadable.length)foot.appendChild(el("p","unread","Could not read: "+d.unreadable.map(function(x){return x.replace(/_/g," ");}).join(", ")+"."));
+  var chips=el("div","chips"),ev=(d.events||[]).concat([{kind:"saved",text:"Added to your table"}]);
+  ev.forEach(function(e){chips.appendChild(el("span","chip "+e.kind,e.text));});foot.appendChild(chips);
+  if(d.left!=null)foot.appendChild(el("p","tnote",d.left+" of __VISITOR_CAP__ receipts left today for this browser."));
+  s.appendChild(foot); s.classList.add("show"); s.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"});
+}
+
+/* ---------- table ---------- */
+var COLS=[["date","Date","e"],["vendor","Vendor","e"],["invoice","Invoice no.","e"],["category","Category","e"],["currency","Cur.","e"],["subtotal","Subtotal","e r"],["tax","Tax","e r"],["total","Total","e r"],["payment","Paid by","e"]];
+function renderTable(){
+  var tb=$("tb"); tb.textContent=""; $("empty").style.display=rows.length?"none":"block"; $("tbl").style.display=rows.length?"":"none";
+  rows.forEach(function(row){
+    var tr=el("tr",row.status==="needs_person"&&!row.reviewed?"np":""); tr.dataset.id=row.id;
+    COLS.forEach(function(c){
+      var td=el("td",c[2]+(row.edited[c[0]]?" ed":"")); td.dataset.f=c[0]; td.dataset.l=c[1];
+      var v=row[c[0]]; td.textContent=(c[0]==="subtotal"||c[0]==="tax"||c[0]==="total")?money(v):(v==null?"":v);
+      if((v==null||v==="")&&c[0]!=="tax"&&c[0]!=="subtotal"){td.textContent="";td.title="Not read. Click to type it.";}
+      tr.appendChild(td);
+    });
+    var st=el("td"); st.dataset.l="Status"; var pill=el("button","pill "+(row.reviewed?"reviewed":row.status),row.reviewed?"Reviewed":STATUS[row.status]); pill.type="button"; pill.style.cursor="pointer";
+    pill.title=(row.flags&&row.flags.length?row.flags.join(" "):"No flags")+" Click to mark as reviewed."; pill.dataset.act="review"; pill.style.background=row.reviewed?"transparent":""; st.appendChild(pill); tr.appendChild(st);
+    var ac=el("td","act"); var x=el("button","x","×"); x.type="button"; x.title="Delete this row"; x.setAttribute("aria-label","Delete row"); x.dataset.act="del"; ac.appendChild(x); tr.appendChild(ac);
+    tb.appendChild(tr);
+    if(row.flags&&row.flags.length&&!row.reviewed){var xr=el("tr","xrow"),xt=el("td",null,row.flags.join(" "));xt.colSpan=11;xr.appendChild(xt);tb.appendChild(xr);}
+  });
+  var tf=$("tf"); tf.textContent=""; var by={}; rows.forEach(function(r){if(r.total!=null){var k=r.currency||"?";by[k]=(by[k]||0)+r.total;}});
+  var keys=Object.keys(by); if(keys.length){var fr=el("tr"),ft=el("td",null,rows.length+" receipt"+(rows.length>1?"s":"")+", totals: "+keys.map(function(k){return k+" "+money(by[k]);}).join("  ·  "));ft.colSpan=11;fr.appendChild(ft);tf.appendChild(fr);}
+}
+function setCell(row,f,raw){
+  var old=row[f],v;
+  if(f==="subtotal"||f==="tax"||f==="total"){v=raw.trim()===""?null:numIn(raw); if(raw.trim()!==""&&v==null)return false;}
+  else if(f==="date"){v=raw.trim(); if(v&&!realDate(v)){notice("Dates are typed as YYYY-MM-DD, for example 2026-09-18, and must be a real date.");return false;}}
+  else if(f==="currency")v=raw.trim().toUpperCase().slice(0,3);
+  else v=raw.trim().slice(0,80);
+  if(v===old||(v===""&&(old==null||old===""))) return true;
+  row[f]=v; row.edited[f]=true; save(); return true;
+}
+$("tb").addEventListener("click",function(e){
+  var act=e.target.closest("[data-act]"),tr=e.target.closest("tr[data-id]"); if(!tr)return; var row=rows.filter(function(r){return r.id===tr.dataset.id;})[0]; if(!row)return;
+  if(act){ if(act.dataset.act==="del"){rows=rows.filter(function(r){return r!==row;});} else if(act.dataset.act==="review"){row.reviewed=!row.reviewed;} save(); renderTable(); return; }
+  var td=e.target.closest("td.e"); if(!td||td.querySelector("input,select"))return;
+  var f=td.dataset.f, inp;
+  if(f==="category"){inp=document.createElement("select");CATS.forEach(function(c){var o=document.createElement("option");o.value=o.textContent=c;if(c===row.category)o.selected=true;inp.appendChild(o);});}
+  else{inp=document.createElement("input");inp.value=row[f]==null?"":((f==="subtotal"||f==="tax"||f==="total")?row[f]:row[f]);inp.setAttribute("aria-label","Edit "+f);}
+  td.textContent=""; td.appendChild(inp); inp.focus(); if(inp.select)inp.select();
+  var done=false; function commit(ok){if(done)return;done=true;if(ok)setCell(row,f,inp.value);renderTable();}
+  inp.addEventListener("keydown",function(k){if(k.key==="Enter")commit(true);else if(k.key==="Escape")commit(false);});
+  inp.addEventListener("blur",function(){commit(true);}); if(f==="category")inp.addEventListener("change",function(){commit(true);});
+});
+$("clear").addEventListener("click",function(){if(!rows.length)return; if(confirm("Remove all receipts from this table? This only affects this browser.")){rows=[];save();renderTable();}});
+
+/* ---------- CSV ---------- */
+function cell(v){v=v==null?"":String(v);if(/^[=+\-@\t\r]/.test(v)&&isNaN(Number(v)))v="'"+v;return /[",\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+$("csv").addEventListener("click",function(){
+  if(!rows.length){notice("Nothing to download yet. Read a receipt first.");return;}
+  var head=["Date","Vendor","Invoice no","Category","Currency","Subtotal","Tax","CGST","SGST","IGST","Total","Paid by","Status","Notes","Line items"];
+  var lines=[head.join(",")];
+  rows.slice().reverse().forEach(function(r){
+    lines.push([r.date,r.vendor,r.invoice,r.category,r.currency,r.subtotal,r.tax,r.cgst,r.sgst,r.igst,r.total,r.payment,r.reviewed?"Reviewed":STATUS[r.status],(r.flags||[]).join(" "),(r.items||[]).map(function(i){return i.description+" x"+i.qty+" = "+money(i.amount).replace(/,/g,"");}).join("; ")].map(cell).join(","));
+  });
+  var blob=new Blob(["﻿"+lines.join("\r\n")+"\r\n"],{type:"text/csv;charset=utf-8"}), a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="receipts-"+new Date().toISOString().slice(0,10)+".csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+});
+
+/* ---------- inputs ---------- */
+$("snap").addEventListener("click",function(){$("fcam").click();});
+$("pick").addEventListener("click",function(){$("ffile").click();});
+["fcam","ffile"].forEach(function(id){$(id).addEventListener("change",function(){var f=this.files&&this.files[0];this.value="";if(f)handle(f);});});
+var drop=$("drop");
+["dragenter","dragover"].forEach(function(t){drop.addEventListener(t,function(e){e.preventDefault();drop.classList.add("over");});});
+["dragleave","drop"].forEach(function(t){drop.addEventListener(t,function(e){e.preventDefault();drop.classList.remove("over");});});
+drop.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handle(f);});
+$("samples").addEventListener("click",function(e){
+  var b=e.target.closest("[data-s]"); if(!b||busy)return;
+  fetch("/samples/"+b.dataset.s+".jpg").then(function(r){return r.blob();}).then(handle).catch(function(){notice("Could not load the sample.");});
+});
+renderTable();
+})();
+</script>
+</body>
+</html>

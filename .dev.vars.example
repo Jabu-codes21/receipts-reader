@@ -1,0 +1,2 @@
+# copy to a file named .dev.vars for local runs (git-ignored, never commit it)
+OWNER_KEY=change-me-local-only

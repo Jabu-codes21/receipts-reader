@@ -1,0 +1,52 @@
+[
+ {
+  "name": "4 MB reject (413, no model call, not counted)",
+  "pass": true,
+  "detail": "413 too_big in 244 ms"
+ },
+ {
+  "name": "non-image rejected (415, not counted)",
+  "pass": true,
+  "detail": "415"
+ },
+ {
+  "name": "per-IP cap beats cookie clearing",
+  "pass": true,
+  "detail": "refused on call 5, limited=ip, 22 ms"
+ },
+ {
+  "name": "per-visitor daily cap (cookie)",
+  "pass": true,
+  "detail": "calls 1-3 ok, 4th: 429 limited=visitor in 21 ms; left after 1st=2"
+ },
+ {
+  "name": "refusal text is the fixed polite message",
+  "pass": true,
+  "detail": "\"You have reached today's limit for this demo (3 receipts per visitor). Please come back to\""
+ },
+ {
+  "name": "a different visitor is unaffected",
+  "pass": true,
+  "detail": "status ok left=2"
+ },
+ {
+  "name": "global daily cap refuses everyone without calling the model",
+  "pass": true,
+  "detail": "limited=global/global in 22/20 ms"
+ },
+ {
+  "name": "OWNER_KEY bypasses the caps",
+  "pass": true,
+  "detail": "status ok"
+ },
+ {
+  "name": "wrong owner key does not bypass",
+  "pass": true,
+  "detail": "status 429"
+ },
+ {
+  "name": "x-model override ignored without owner key",
+  "pass": true,
+  "detail": "status 429 (refused by cap, model not chosen by visitor)"
+ }
+]

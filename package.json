@@ -1,0 +1,15 @@
+{
+  "name": "receipts-reader-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Receipts-to-expenses reader demo. Cloudflare Workers + Durable Object + Workers AI vision.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8812",
+    "dev:remote": "wrangler dev --remote --port 8812",
+    "test": "node test/run-tests.mjs http://127.0.0.1:8812"
+  },
+  "devDependencies": {
+    "wrangler": "^4.153.0"
+  }
+}
